@@ -3,239 +3,1985 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASA 5506-X Configuration</title>
+    <title>Final Exam - Networking and Security</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.5;
-            background-color: #fff;
-            margin: 40px;
+            margin: 20px;
+            background-color: #f4f4f4;
         }
-        h1, h2, h3 {
+        h1, h2 {
             color: #333;
         }
-        pre {
-            background-color: #f0f0f0;
-            padding: 15px;
+        .question {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
             border-radius: 5px;
-            font-family: "Courier New", Courier, monospace;
-            font-size: 14px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            font-size: 24px;
+        .answers {
+            list-style-type: none;
+            padding-left: 0;
         }
-        h2 {
-            font-size: 20px;
+        .answers li {
+            padding: 5px 0;
         }
-        h3 {
-            font-size: 18px;
-        }
-        section {
-            margin-bottom: 30px;
+        .answers li.correct {
+            font-weight: bold;
+            color: green;
         }
     </style>
 </head>
 <body>
 
-    <section>
-        <h1>Part 1: Configure the ASA 5506-X</h1>
+    <h1>Final Exam - Networking and Security</h1>
 
-        <h2>Step 1: Configure Basic Settings on the ASA device</h2>
+    <div class="question">
+        <h2>1. Which two statements are characteristics of a virus? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">A virus typically requires end-user activation.</li>
+            <li class="correct">A virus can be dormant and then activate at a specific time or date.</li>
+            <li>A virus replicates itself by independently exploiting vulnerabilities in networks.</li>
+            <li>A virus has an enabling vulnerability, a propagation mechanism, and a payload.</li>
+            <li>A virus provides the attacker with sensitive data such as passwords.</li>
+        </ul>
+    </div>
 
-        <pre>HQ-ASA5506
-enable
-Thecar1Admin
-conf term
-domain-name thecar1.com
-hostname HQ-ASA5506
+    <div class="question">
+        <h2>2. What is a characteristic of a Trojan horse as it relates to network security?</h2>
+        <p>Malware is contained in a seemingly legitimate executable program.</p>
+    </div>
 
-interface g1/1    
-nameif OUTSIDE
-security-level 1
-ip address 209.165.200.253 255.255.255.240
-no shutdown
+    <div class="question">
+        <h2>3. What technique is used in social engineering attacks?</h2>
+        <ul class="answers">
+            <li>Sending junk email</li>
+            <li>Buffer overflow</li>
+            <li class="correct">Phishing</li>
+            <li>Man-in-the-middle</li>
+        </ul>
+    </div>
 
-interface g1/2
-nameif INSIDE
-security-level 100
-ip address 192.168.10.1 255.255.255.0
-no shutdown
+    <div class="question">
+        <h2>4. What is a purpose of implementing VLANs on a network?</h2>
+        <p class="correct">They can separate user traffic.</p>
+    </div>
 
-interface g1/3
-nameif DMZ
-security-level 70
-ip address 192.168.20.1 255.255.255.0
-no shutdown
-exit
-        </pre>
+    <div class="question">
+        <h2>5. Refer to the exhibit. A cybersecurity analyst is viewing packets forwarded by switch S2. What addresses will identify frames containing data sent from PCA to PCB?</h2>
+        <ul class="answers">
+            <li>Src IP: 192.168.2.1 | Src MAC: 00-60-0F-B1-33-33 | Dst IP: 192.168.2.101 | Dst MAC: 08-CB-8A-5C-BB-BB</li>
+            <li>Src IP: 192.168.1.212 | Src MAC: 01-90-C0-E4-AA-AA | Dst IP: 192.168.2.101 | Dst MAC: 08-CB-8A-5C-BB-BB</li>
+            <li class="correct">Src IP: 192.168.1.212 | Src MAC: 00-60-0F-B1-33-33 | Dst IP: 192.168.2.101 | Dst MAC: 08-CB-8A-5C-BB-BB</li>
+            <li>Src IP: 192.168.1.212 | Src MAC: 00-60-0F-B1-33-33 | Dst IP: 192.168.2.101 | Dst MAC: 00-D0-D3-BE-00-00</li>
+        </ul>
+    </div>
 
-        <h2>Step 2: Configure the DHCP service on the ASA device for the internal network</h2>
+    <div class="question">
+        <h2>6. A cybersecurity analyst needs to collect alert data. What are three detection tools to perform this task in the Security Onion architecture? (Choose three.)</h2>
+        <ul class="answers">
+            <li>CapME</li>
+            <li class="correct">Wazuh</li>
+            <li>Kibana</li>
+            <li class="correct">Zeek</li>
+            <li>Sguil</li>
+            <li class="correct">Wireshark</li>
+        </ul>
+    </div>
 
-        <pre>HQ-ASA5506
-dhcpd address 192.168.10.25-192.168.10.35 INSIDE
-dhcpd dns 192.168.10.10 interface INSIDE
-dhcpd option 3 ip 192.168.10.1
-dhcpd enable INSIDE
-        </pre>
+    <div class="question">
+        <h2>7. Match the Security Onion tool with the description.</h2>
+        <p>This question requires a matching table, but for now, here are the tools:</p>
+        <ul class="answers">
+            <li>CapME</li>
+            <li>Wazuh</li>
+            <li>Kibana</li>
+            <li>Zeek</li>
+            <li>Sguil</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>8. In network security assessments, which type of test is used to evaluate the risk posed by vulnerabilities to a specific organization?</h2>
+        <ul class="answers">
+            <li>Port scanning</li>
+            <li class="correct">Risk analysis</li>
+            <li>Penetration testing</li>
+            <li>Vulnerability assessment</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>9. Match the server profile element to the description.</h2>
+        <p>Another matching question, here are the server profile elements:</p>
+        <ul class="answers">
+            <li>Server Role</li>
+            <li>Server IP</li>
+            <li>Server Location</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>10. In addressing an identified risk, which strategy aims to shift some of the risk to other parties?</h2>
+        <ul class="answers">
+            <li>Risk avoidance</li>
+            <li class="correct">Risk sharing</li>
+            <li>Risk retention</li>
+            <li>Risk reduction</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>11. What is a network tap?</h2>
+        <ul class="answers">
+            <li>A technology used to provide real-time reporting and long-term analysis of security events</li>
+            <li>A Cisco technology that provides statistics on packets flowing through a router or multilayer switch</li>
+            <li class="correct">A passive device that forwards all traffic and physical layer errors to an analysis device</li>
+            <li>A feature supported on Cisco switches that enables the switch to copy frames and forward them to an analysis device</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>12. Match the monitoring tool to the definition.</h2>
+        <p>Another matching question, here are the tools to match:</p>
+        <ul class="answers">
+            <li>Wireshark</li>
+            <li>Snort</li>
+            <li>OSSEC</li>
+            <li>Zeek</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>13. If a SOC has a goal of 99.999% uptime, how many minutes of downtime a year would be considered within its goal?</h2>
+        <ul class="answers">
+            <li class="correct">Approximately 5 minutes per year</li>
+            <li>Approximately 10 minutes per year</li>
+            <li>Approximately 20 minutes per year</li>
+            <li>Approximately 30 minutes per year</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>14. The HTTP server has responded to a client request with a 200 status code. What does this status code indicate?</h2>
+        <ul class="answers">
+            <li>The request is understood by the server, but the resource will not be fulfilled</li>
+            <li class="correct">The request was completed successfully</li>
+            <li>The server could not find the requested resource, possibly because of an incorrect URL</li>
+            <li>The request has been accepted for processing, but processing is not completed</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>15. What is an advantage for small organizations of adopting IMAP instead of POP?</h2>
+        <ul class="answers">
+            <li>POP only allows the client to store messages in a centralized way, while IMAP allows distributed storage</li>
+            <li>IMAP sends and retrieves email, but POP only retrieves email</li>
+            <li class="correct">When the user connects to a POP server, copies of the messages are kept in the mail server for a short time, but IMAP keeps them for a long time</li>
+            <li>Messages are kept in the mail servers until they are manually deleted from the email client</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>16. What debugging security tool can be used by black hats to reverse engineer binary files when writing exploits?</h2>
+        <ul class="answers">
+            <li class="correct">WinDbg</li>
+            <li>Firesheep</li>
+            <li>Skipfish</li>
+            <li>AIDE</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>17. Match the attack tools with the description.</h2>
+        <p>Another matching question:</p>
+        <ul class="answers">
+            <li>Metasploit</li>
+            <li>Nmap</li>
+            <li>John the Ripper</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>18. What are two features of ARP? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">If a host is ready to send a packet to a local destination device and it has the IP address but not the MAC address of the destination, it generates an ARP broadcast.</li>
+            <li class="correct">If a device receiving an ARP request has the destination IPv4 address, it responds with an ARP reply.</li>
+            <li>If no device responds to the ARP request, the originating node will broadcast the data packet to all devices on the network segment.</li>
+            <li>An ARP request is sent to all devices on the Ethernet LAN and contains the IP address of the destination host and the multicast MAC address.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>19. What is a property of the ARP table on a device?</h2>
+        <ul class="answers">
+            <li class="correct">Entries in an ARP table are time-stamped and are purged after the timeout expires.</li>
+            <li>Every operating system uses the same timer to remove old entries from the ARP cache.</li>
+            <li>Static IP-to-MAC address entries are removed dynamically from the ARP table.</li>
+            <li>Windows operating systems store ARP cache entries for 3 minutes.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>20. What is the purpose of Tor?</h2>
+        <ul class="answers">
+            <li class="correct">To allow users to browse the Internet anonymously</li>
+            <li>To securely connect to a remote network over an unsecure link such as an Internet connection</li>
+            <li>To donate processor cycles to distributed computational tasks in a processor-sharing P2P network</li>
+            <li>To inspect incoming traffic and look for any that violates a rule or matches the signature of a known exploit</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>21. Which two network protocols can be used by a threat actor to exfiltrate data in traffic that is disguised as normal network traffic? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">DNS</li>
+            <li class="correct">HTTP</li>
+            <li>NTP</li>
+            <li>Syslog</li>
+            <li>SMTP</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>22. What is a key difference between the data captured by NetFlow and data captured by Wireshark?</h2>
+        <ul class="answers">
+            <li>NetFlow data shows network flow contents, whereas Wireshark data shows network flow statistics.</li>
+            <li class="correct">NetFlow collects metadata from a network flow, whereas Wireshark captures full data packets.</li>
+            <li>NetFlow is analyzed by tcpdump, whereas Wireshark is analyzed by nfdump.</li>
+            <li>NetFlow provides transaction data, whereas Wireshark provides session data.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>23. Which tool captures full data packets with a command-line interface only?</h2>
+        <ul class="answers">
+            <li class="correct">tcpdump</li>
+            <li>Wireshark</li>
+            <li>NBAR2</li>
+            <li>nfdump</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>24. Which method can be used to harden a device?</h2>
+        <ul class="answers">
+            <li class="correct">Use SSH and disable the root account access over SSH</li>
+            <li>Maintain use of the same passwords</li>
+            <li>Allow default services to remain enabled</li>
+            <li>Allow USB auto-detection</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>25. In a Linux operating system, which component interprets user commands and attempts to execute them?</h2>
+        <ul class="answers">
+            <li>GUI</li>
+            <li>Daemon</li>
+            <li>Kernel</li>
+            <li class="correct">Shell</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>26. A network administrator is configuring an AAA server to manage RADIUS authentication. Which two features are included in RADIUS authentication? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">Encryption for only the data</li>
+            <li class="correct">Single process for authentication and authorization</li>
+            <li>Encryption for all communication</li>
+            <li>Separate processes for authentication and authorization</li>
+            <li>Hidden passwords during transmission</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>27. What is privilege escalation?</h2>
+        <ul class="answers">
+            <li class="correct">Vulnerabilities in systems are exploited to grant higher levels of privilege than someone or some process should have.</li>
+            <li>Everyone is given full rights by default to everything, and rights are taken away only when someone abuses privileges.</li>
+            <li>Someone is given rights because they have received a promotion.</li>
+            <li>A security problem occurs when high-ranking corporate officials demand rights to systems or files that they should not have.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>28. What two assurances does digital signing provide about code that is downloaded from the Internet? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">The code has not been modified since it left the software publisher.</li>
+            <li class="correct">The code is authentic and is actually sourced by the publisher.</li>
+            <li>The code contains no viruses.</li>
+            <li>The code contains no errors.</li>
+            <li>The code was encrypted with both a private and public key.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>29. In which two cases might an organization use PKI applications to securely exchange information between users? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">HTTPS web service</li>
+            <li class="correct">802.1x authentication</li>
+            <li>Local NTP server</li>
+            <li>FTP transfers</li>
+            <li>File and directory access permission</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>30. Which measure can a security analyst take to perform effective security monitoring against network traffic encrypted by SSL technology?</h2>
+        <ul class="answers">
+            <li>Use a Syslog server to capture network traffic.</li>
+            <li class="correct">Deploy a Cisco SSL Appliance.</li>
+            <li>Require remote access connections through IPsec VPN.</li>
+            <li>Deploy a Cisco ASA.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>31. Which three objectives must the BYOD security policy address? (Choose three.)</h2>
+        <ul class="answers">
+            <li class="correct">Rights and activities permitted on the corporate network must be defined.</li>
+            <li class="correct">Safeguards must be put in place for any personal device being compromised.</li>
+            <li class="correct">The level of access of employees when connecting to the corporate network must be defined.</li>
+            <li>All devices must be insured against liability if used to compromise the corporate network.</li>
+            <li>All devices must have open authentication with the corporate network.</li>
+            <li>All devices should be allowed to attach to the corporate network flawlessly.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>32. Match the security policy with the description.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>Password policy</li>
+            <li>Data retention policy</li>
+            <li>Incident response policy</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>33. Match the attack to the definition.</h2>
+        <p>Another matching question with placeholders:</p>
+        <ul class="answers">
+            <li>Denial of service</li>
+            <li>SQL injection</li>
+            <li>Man-in-the-middle</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>34. What type of attack targets an SQL database using the input field of a user?</h2>
+        <ul class="answers">
+            <li>XML injection</li>
+            <li>Buffer overflow</li>
+            <li>Cross-site scripting</li>
+            <li class="correct">SQL injection</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>35. What are two characteristics of Ethernet MAC addresses? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">They are expressed as 12 hexadecimal digits.</li>
+            <li class="correct">They are globally unique.</li>
+            <li>MAC addresses use a flexible hierarchical structure.</li>
+            <li>They are routable on the Internet.</li>
+            <li>MAC addresses must be unique for both Ethernet and serial interfaces on a device.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>36. A user calls to report that a PC cannot access the internet. The network technician asks the user to issue the command ping 127.0.0.1. What conclusion can be drawn based on this connectivity test?</h2>
+        <ul class="answers">
+            <li>The IP address obtained from the DHCP server is correct.</li>
+            <li class="correct">The TCP/IP implementation is functional.</li>
+            <li>The PC can access the Internet. However, the web browser may not work.</li>
+            <li>The PC can access the network. The problem exists beyond the local network.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>37. What characterizes a threat actor?</h2>
+        <ul class="answers">
+            <li>They are all highly skilled individuals.</li>
+            <li>They always use advanced tools to launch attacks.</li>
+            <li class="correct">They always try to cause some harm to an individual or organization.</li>
+            <li>They all belong to organized crime.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>38. A computer is presenting a user with a screen requesting payment before the user data is allowed to be accessed by the same user. What type of malware is this?</h2>
+        <ul class="answers">
+            <li>A type of logic bomb</li>
+            <li>A type of virus</li>
+            <li>A type of worm</li>
+            <li class="correct">A type of ransomware</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>39. Which ICMPv6 message type provides network addressing information to hosts that use SLAAC?</h2>
+        <ul class="answers">
+            <li>Router solicitation</li>
+            <li>Neighbor advertisement</li>
+            <li>Neighbor solicitation</li>
+            <li class="correct">Router advertisement</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>40. Which tool included in the Security Onion is a series of software plugins that send different types of data to the Elasticsearch data stores?</h2>
+        <ul class="answers">
+            <li>Curator</li>
+            <li class="correct">Beats</li>
+            <li>OSSEC</li>
+            <li>ElastAlert</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>41. Which two types of unreadable network traffic could be eliminated from data collected by NSM? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">IPsec traffic</li>
+            <li class="correct">SSL traffic</li>
+            <li>STP traffic</li>
+            <li>Routing updates traffic</li>
+            <li>Broadcast traffic</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>42. Which core open-source component of the Elastic-stack is responsible for accepting the data in its native format and making elements of the data consistent across all sources?</h2>
+        <ul class="answers">
+            <li>Logstash</li>
+            <li>Kibana</li>
+            <li class="correct">Beats</li>
+            <li>Elasticsearch</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>43. Match the security incident stakeholder with the role.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>IT Manager</li>
+            <li>Security Analyst</li>
+            <li>Incident Response Team</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>44. In the NIST incident response process life cycle, which type of attack vector involves the use of brute force against devices, networks, or services?</h2>
+        <ul class="answers">
+            <li>Media</li>
+            <li>Impersonation</li>
+            <li class="correct">Attrition</li>
+            <li>Loss or theft</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>45. Match the security organization with its security functions.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>NIST</li>
+            <li>CERT</li>
+            <li>US-CERT</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>46. What is a characteristic of CybOX?</h2>
+        <ul class="answers">
+            <li class="correct">It is a set of standardized schemata for specifying, capturing, characterizing, and communicating events and properties of network operations.</li>
+            <li>It enables the real-time exchange of cyberthreat indicators between the U.S. Federal Government and the private sector.</li>
+            <li>It is a set of specifications for exchanging cyberthreat information between organizations.</li>
+            <li>It is the specification for an application layer protocol that allows the communication of CTI over HTTPS.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>47. After host A receives a web page from server B, host A terminates the connection with server B. Match each step to its correct option in the normal termination process for a TCP connection.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>SYN</li>
+            <li>FIN</li>
+            <li>ACK</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>48. What are two ways that ICMP can be a security threat to a company? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">By collecting information about a network</li>
+            <li class="correct">By providing a conduit for DoS attacks</li>
+            <li>By corrupting data between email servers and email recipients</li>
+            <li>By the infiltration of web pages</li>
+            <li>By corrupting network IP data packets</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>49. Which three IPv4 header fields have no equivalent in an IPv6 header? (Choose three.)</h2>
+        <ul class="answers">
+            <li class="correct">Fragment offset</li>
+            <li class="correct">Flag</li>
+            <li class="correct">Identification</li>
+            <li>Protocol</li>
+            <li>Version</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>50. Which two net commands are associated with network resource sharing? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">net share</li>
+            <li class="correct">net use</li>
+            <li>net start</li>
+            <li>net accounts</li>
+            <li>net stop</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>51. Match the Windows 10 Registry key with its description.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>HKEY_LOCAL_MACHINE</li>
+            <li>HKEY_CURRENT_USER</li>
+            <li>HKEY_CLASSES_ROOT</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>52. Which PDU format is used when bits are received from the network medium by the NIC of a host?</h2>
+        <ul class="answers">
+            <li>Segment</li>
+            <li>File</li>
+            <li>Packet</li>
+            <li class="correct">Frame</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>53. A user is executing a tracert to a remote device. At what point would a router, which is in the path to the destination device, stop forwarding the packet?</h2>
+        <ul class="answers">
+            <li>When the router receives an ICMP Time Exceeded message</li>
+            <li>When the values of both the Echo Request and Echo Reply messages reach zero</li>
+            <li class="correct">When the value in the TTL field reaches zero</li>
+            <li>When the RTT value reaches zero</li>
+            <li>When the host responds with an ICMP Echo Reply message</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>54. What solution can provide a VPN between site A and site B to support encapsulation of any Layer 3 protocol between the internal networks at each site?</h2>
+        <ul class="answers">
+            <li>An IPsec tunnel</li>
+            <li>Cisco SSL VPN</li>
+            <li class="correct">A GRE tunnel</li>
+            <li>A remote access tunnel</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>55. For what purpose would a network administrator use the Nmap tool?</h2>
+        <ul class="answers">
+            <li>Protection of the private IP addresses of internal hosts</li>
+            <li>Identification of specific network anomalies</li>
+            <li class="correct">Detection and identification of open ports</li>
+            <li>Collection and analysis of security alerts and logs</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>56. Match the network service with the description.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>DHCP</li>
+            <li>DNS</li>
+            <li>SMTP</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>57. A client application needs to terminate a TCP communication session with a server. Place the termination process steps in the order that they will occur.</h2>
+        <p>Placeholder for steps:</p>
+        <ul class="answers">
+            <li>FIN from client</li>
+            <li>ACK from server</li>
+            <li>FIN from server</li>
+            <li>ACK from client</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>58. Match the attack surface with attack exploits.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>Physical attack</li>
+            <li>Network attack</li>
+            <li>Application attack</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>59. Match the Linux host-based firewall application with its description.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>iptables</li>
+            <li>nftables</li>
+            <li>UFW</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>60. What network attack seeks to create a DoS for clients by preventing them from being able to obtain a DHCP lease?</h2>
+        <ul class="answers">
+            <li class="correct">DHCP starvation</li>
+            <li>IP address spoofing</li>
+            <li>DHCP spoofing</li>
+            <li>CAM table attack</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>61. Refer to the exhibit. If Host1 were to transfer a file to the server, what layers of the TCP/IP model would be used?</h2>
+        <ul class="answers">
+            <li>Only application and Internet layers</li>
+            <li class="correct">Application, transport, Internet, and network access layers</li>
+            <li>Only Internet and network access layers</li>
+            <li>Only application, transport, network, data link, and physical layers</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>62. A company has a file server that shares a folder named Public. The network security policy specifies that the Public folder is assigned Read-Only rights to anyone who can log into the server, while the Edit rights are assigned only to the network admin group. Which component is addressed in the AAA network service framework?</h2>
+        <ul class="answers">
+            <li>Automation</li>
+            <li>Authentication</li>
+            <li class="correct">Authorization</li>
+            <li>Accounting</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>63. Match the destination network routing table entry type with a definition.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>Directly connected</li>
+            <li>Static route</li>
+            <li>Default route</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>64. A person coming to a cafe for the first time wants to gain wireless access to the Internet using a laptop. What is the first step the wireless client will do in order to communicate over the network using a wireless management frame?</h2>
+        <ul class="answers">
+            <li>Associate with the AP</li>
+            <li>Authenticate to the AP</li>
+            <li class="correct">Discover the AP</li>
+            <li>Agree with the AP on the payload</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>65. A device has been assigned the IPv6 address of 2001:0db8:cafe:4500:1000:00d8:0058:00ab/64. Which is the network identifier of the device?</h2>
+        <ul class="answers">
+            <li>2001:0db8:cafe:4500:1000</li>
+            <li>2001:0db8:cafe:4500:1000:00d8:0058:00ab</li>
+            <li>1000:00d8:0058:00ab</li>
+            <li class="correct">2001:0db8:cafe:4500</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>66. An administrator wants to create four subnetworks from the network address 192.168.1.0/24. What is the network address and subnet mask of the second useable subnet?</h2>
+        <ul class="answers">
+            <li class="correct">Subnetwork 192.168.1.64, subnet mask 255.255.255.192</li>
+            <li>Subnetwork 192.168.1.64, subnet mask 255.255.255.240</li>
+            <li>Subnetwork 192.168.1.32, subnet mask 255.255.255.240</li>
+            <li>Subnetwork 192.168.1.128, subnet mask 255.255.255.192</li>
+            <li>Subnetwork 192.168.1.8, subnet mask 255.255.255.224</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>67. What term describes a set of software tools designed to increase the privileges of a user or to grant access to the user to portions of the operating system that should not normally be allowed?</h2>
+        <ul class="answers">
+            <li>Compiler</li>
+            <li class="correct">Rootkit</li>
+            <li>Package manager</li>
+            <li>Penetration testing</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>68. The IT security personnel of an organization notice that the web server deployed in the DMZ is frequently targeted by threat actors. The decision is made to implement a patch management system to manage the server. Which risk management strategy method is being used to respond to the identified risk?</h2>
+        <ul class="answers">
+            <li>Risk sharing</li>
+            <li>Risk avoidance</li>
+            <li class="correct">Risk reduction</li>
+            <li>Risk retention</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>69. What are three characteristics of an information security management system? (Choose three.)</h2>
+        <ul class="answers">
+            <li class="correct">It is a systematic and multilayered approach to cybersecurity.</li>
+            <li class="correct">It addresses the inventory and control of hardware and software configurations of systems.</li>
+            <li class="correct">It consists of a management framework through which an organization identifies, analyzes, and addresses information security risks.</li>
+            <li>It involves the implementation of systems that track the location and configuration of networked devices and software across an enterprise.</li>
+            <li>It is based on the application of servers and security devices.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>70. Which three technologies should be included in a SOC security information and event management system? (Choose three.)</h2>
+        <ul class="answers">
+            <li class="correct">Event collection, correlation, and analysis</li>
+            <li class="correct">Security monitoring</li>
+            <li>Proxy service</li>
+            <li>Intrusion prevention</li>
+            <li class="correct">Threat intelligence</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>71. What part of the URL http://www.cisco.com/index.html represents the top-level DNS domain?</h2>
+        <ul class="answers">
+            <li>http</li>
+            <li>www</li>
+            <li class="correct">.com</li>
+            <li>index</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>72. What best describes the security threat of spoofing?</h2>
+        <ul class="answers">
+            <li>Sending bulk email to individuals, lists, or domains with the intention to prevent users from accessing email</li>
+            <li>Sending abnormally large amounts of data to a remote server to prevent user access to the server services</li>
+            <li class="correct">Making data appear to come from a source that is not the actual source</li>
+            <li>Intercepting traffic between two hosts or inserting false information into traffic between two hosts</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>73. A newly created company has fifteen Windows 10 computers that need to be installed before the company can open for business. What is a best practice that the technician should implement when configuring the Windows Firewall?</h2>
+        <ul class="answers">
+            <li>The technician should remove all default firewall rules and selectively deny traffic from reaching the company network.</li>
+            <li class="correct">The technician should enable the Windows Firewall for inbound traffic and install other firewall software for outbound traffic control.</li>
+            <li>After implementing third-party security software for the company, the technician should verify that the Windows Firewall is disabled.</li>
+            <li>The technician should create instructions for corporate users on how to allow an app through the Windows Firewall using the Administrator account.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>74. Which statement defines the difference between session data and transaction data in logs?</h2>
+        <ul class="answers">
+            <li>Session data analyzes network traffic and predicts network behavior, whereas transaction data records network sessions.</li>
+            <li>Session data is used to make predictions on network behaviors, whereas transaction data is used to detect network anomalies.</li>
+            <li class="correct">Session data records a conversation between hosts, whereas transaction data focuses on the result of network sessions.</li>
+            <li>Session data shows the result of a network session, whereas transaction data is in response to network threat traffic.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>75. Match the network monitoring data type with the description.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>Session data</li>
+            <li>Transaction data</li>
+            <li>Flow data</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>76. Which device supports the use of SPAN to enable monitoring of malicious activity?</h2>
+        <ul class="answers">
+            <li class="correct">Cisco Catalyst switch</li>
+            <li>Cisco IronPort</li>
+            <li>Cisco NAC</li>
+            <li>Cisco Security Agent</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>77. Which term is used for describing automated queries that are useful for adding efficiency to the cyberoperations workflow?</h2>
+        <ul class="answers">
+            <li>Cyber kill chain</li>
+            <li class="correct">Playbook</li>
+            <li>Chain of custody</li>
+            <li>Rootkit</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>78. When ACLs are configured to block IP address spoofing and DoS flood attacks, which ICMP message should be allowed both inbound and outbound?</h2>
+        <ul class="answers">
+            <li class="correct">Echo reply</li>
+            <li>Unreachable</li>
+            <li>Source quench</li>
+            <li>Echo</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>79. After a security monitoring tool identifies a malware attachment entering the network, what is the benefit of performing a retrospective analysis?</h2>
+        <ul class="answers">
+            <li class="correct">It can identify how the malware originally entered the network.</li>
+            <li>A retrospective analysis can help in tracking the behavior of the malware from the identification point forward.</li>
+            <li>It can calculate the probability of a future incident.</li>
+            <li>It can determine which network host was first affected.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>80. Which two data types would be classified as personally identifiable information (PII)? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">Vehicle identification number</li>
+            <li class="correct">Facebook photographs</li>
+            <li>House thermostat reading</li>
+            <li>Average number of cattle per region</li>
+            <li>Hospital emergency use per region</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>81. A help desk technician notices an increased number of calls relating to the performance of computers located at the manufacturing plant. The technician believes that botnets are causing the issue. What are two purposes of botnets? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">To transmit viruses or spam to computers on the same network</li>
+            <li class="correct">To attack other computers</li>
+            <li>To record any and all keystrokes</li>
+            <li>To withhold access to a computer or files until money has been paid</li>
+            <li>To gain access to the restricted part of the operating system</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>82. Which two statements describe the use of asymmetric algorithms? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">If a public key is used to encrypt the data, a private key must be used to decrypt the data.</li>
+            <li class="correct">If a private key is used to encrypt the data, a public key must be used to decrypt the data.</li>
+            <li>Public and private keys may be used interchangeably.</li>
+            <li>If a public key is used to encrypt the data, a public key must be used to decrypt the data.</li>
+            <li>If a private key is used to encrypt the data, a private key must be used to decrypt the data.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>83. Which three security services are provided by digital signatures? (Choose three.)</h2>
+        <ul class="answers">
+            <li class="correct">Guarantees data has not changed in transit</li>
+            <li class="correct">Authenticates the source</li>
+            <li class="correct">Provides nonrepudiation using HMAC functions</li>
+            <li>Provides data encryption</li>
+            <li>Provides confidentiality of digitally signed data</li>
+            <li>Authenticates the destination</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>84. What are two methods to maintain certificate revocation status? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">CRL</li>
+            <li class="correct">OCSP</li>
+            <li>DNS</li>
+            <li>Subordinate CA</li>
+            <li>LDAP</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>85. What are two uses of an access control list? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">ACLs provide a basic level of security for network access.</li>
+            <li class="correct">ACLs can control which areas a host can access on a network.</li>
+            <li>Standard ACLs can restrict access to specific applications and ports.</li>
+            <li>ACLs assist the router in determining the best path to a destination.</li>
+            <li>ACLs can permit or deny traffic based upon the MAC address originating on the router.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>86. A client is using SLAAC to obtain an IPv6 address for the interface. After an address has been generated and applied to the interface, what must the client do before it can begin to use this IPv6 address?</h2>
+        <ul class="answers">
+            <li>It must send an ICMPv6 Router Solicitation message to determine what default gateway it should use.</li>
+            <li>It must send an ICMPv6 Router Solicitation message to request the address of the DNS server.</li>
+            <li class="correct">It must send an ICMPv6 Neighbor Solicitation message to ensure that the address is not already in use on the network.</li>
+            <li>It must wait for an ICMPv6 Router Advertisement message giving permission to use this address.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>87. A technician is troubleshooting a network connectivity problem. Pings to the local wireless router are successful but pings to a server on the Internet are unsuccessful. Which CLI command could assist the technician to find the location of the networking problem?</h2>
+        <ul class="answers">
+            <li>tracert</li>
+            <li class="correct">ipconfig</li>
+            <li>msconfig</li>
+            <li>ipconfig /renew</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>88. What are two evasion techniques that are used by hackers? (Choose two.)</h2>
+        <ul class="answers">
+            <li>Trojan horse</li>
+            <li>Pivot</li>
+            <li class="correct">Rootkit</li>
+            <li>Reconnaissance</li>
+            <li>Phishing</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>89. When a security attack has occurred, which two approaches should security professionals take to mitigate a compromised system during the Actions on Objectives step as defined by the Cyber Kill Chain model? (Choose two.)</h2>
+        <ul class="answers">
+            <li>Perform forensic analysis of endpoints for rapid triage.</li>
+            <li>Train web developers for securing code.</li>
+            <li class="correct">Build detections for the behavior of known malware.</li>
+            <li class="correct">Detect data exfiltration, lateral movement, and unauthorized credential usage.</li>
+            <li>Collect malware files and metadata for future analysis.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>90. Place the seven steps defined in the Cyber Kill Chain in the correct order.</h2>
+        <p>Placeholder for steps:</p>
+        <ul class="answers">
+            <li>Reconnaissance</li>
+            <li>Weaponization</li>
+            <li>Delivery</li>
+            <li>Exploitation</li>
+            <li>Installation</li>
+            <li>Command & Control</li>
+            <li>Actions on Objectives</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>91. Which field in the TCP header indicates the status of the three-way handshake process?</h2>
+        <ul class="answers">
+            <li>Control bits</li>
+            <li>Window</li>
+            <li>Reserved</li>
+            <li class="correct">Checksum</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>92. A user opens three browsers on the same PC to access www.cisco.com to search for certification course information. The Cisco web server sends a datagram as a reply to the request from one of the web browsers. Which information is used by the TCP/IP protocol stack in the PC to identify which of the three web browsers should receive the reply?</h2>
+        <ul class="answers">
+            <li>The source IP address</li>
+            <li>The destination port number</li>
+            <li class="correct">The destination IP address</li>
+            <li>The source port number</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>93. What are two scenarios where probabilistic security analysis is best suited? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">When random variables create difficulty in knowing with certainty the outcome of any given event</li>
+            <li class="correct">When analyzing events with the assumption that they follow predefined steps</li>
+            <li>When applications that conform to application/networking standards are analyzed</li>
+            <li>When each event is the inevitable result of antecedent causes</li>
+            <li>When analyzing applications designed to circumvent firewalls</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>94. Which tool is a web application that provides the cybersecurity analyst an easy-to-read means of viewing an entire Layer 4 session?</h2>
+        <ul class="answers">
+            <li>Snort</li>
+            <li class="correct">Zeek</li>
+            <li>CapME</li>
+            <li>OSSEC</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>95. Match the category of attacks with the description.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>Denial of service</li>
+            <li>Man-in-the-middle</li>
+            <li>SQL injection</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>96. What are two characteristics of the SLAAC method for IPv6 address configuration? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">The default gateway of an IPv6 client on a LAN will be the link-local address of the router interface attached to the LAN.</li>
+            <li class="correct">IPv6 addressing is dynamically assigned to clients through the use of ICMPv6.</li>
+            <li>This stateful method of acquiring an IPv6 address requires at least one DHCPv6 server.</li>
+            <li>Clients send router advertisement messages to routers to request IPv6 addressing.</li>
+            <li>Router solicitation messages are sent by the router to offer IPv6 addressing to clients.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>97. A technician notices that an application is not responding to commands and that the computer seems to respond slowly when applications are opened. What is the best administrative tool to force the release of system resources from the unresponsive application?</h2>
+        <ul class="answers">
+            <li>Event Viewer</li>
+            <li>System Restore</li>
+            <li>Add or Remove Programs</li>
+            <li class="correct">Task Manager</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>98. How can statistical data be used to describe or predict network behavior?</h2>
+        <ul class="answers">
+            <li class="correct">By comparing normal network behavior to current network behavior</li>
+            <li>By recording conversations between network endpoints</li>
+            <li>By listing results of user web surfing activities</li>
+            <li>By displaying alert messages that are generated by Snort</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>99. Which metric in the CVSS Base Metric Group is used with an attack vector?</h2>
+        <ul class="answers">
+            <li>The proximity of the threat actor to the vulnerability</li>
+            <li class="correct">The presence or absence of the requirement for user interaction in order for an exploit to be successful</li>
+            <li>The determination whether the initial authority changes to a second authority during the exploit</li>
+            <li>The number of components (software, hardware, or networks) that are beyond the control of the attacker and that must be present in order for a vulnerability to be successfully exploited</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>100. Which NIST Cybersecurity Framework core function is concerned with the development and implementation of safeguards that ensure the delivery of critical infrastructure services?</h2>
+        <ul class="answers">
+            <li>Respond</li>
+            <li>Detect</li>
+            <li>Identify</li>
+            <li class="correct">Protect</li>
+            <li>Recover</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>101. Which two techniques are used in a smurf attack? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">Amplification</li>
+            <li class="correct">Reflection</li>
+            <li>Session hijacking</li>
+            <li>Resource exhaustion</li>
+            <li>Botnets</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>102. What is the primary objective of a threat intelligence platform (TIP)?</h2>
+        <ul class="answers">
+            <li class="correct">To aggregate the data in one place and present it in a comprehensible and usable format</li>
+            <li>To provide a specification for an application layer protocol that allows the communication of CTI over HTTPS</li>
+            <li>To provide a standardized schema for specifying, capturing, characterizing, and communicating events and properties of network operations</li>
+            <li>To provide a security operations platform that integrates and enhances diverse security tools and threat intelligence</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>103. Which wireless parameter is used by an access point to broadcast frames that include the SSID?</h2>
+        <ul class="answers">
+            <li>Security mode</li>
+            <li>Active mode</li>
+            <li class="correct">Passive mode</li>
+            <li>Channel setting</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>104. Match the field in the Event table of Sguil to the description.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>Timestamp</li>
+            <li>Source IP</li>
+            <li>Destination IP</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>105. An employee connects wirelessly to the company network using a cell phone. The employee then configures the cell phone to act as a wireless access point that will allow new employees to connect to the company network. Which type of security threat best describes this situation?</h2>
+        <ul class="answers">
+            <li class="correct">Rogue access point</li>
+            <li>Cracking</li>
+            <li>Denial of service</li>
+            <li>Spoofing</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>106. What information is required for a WHOIS query?</h2>
+        <ul class="answers">
+            <li>Outside global address of the client</li>
+            <li>ICANN lookup server address</li>
+            <li class="correct">FQDN of the domain</li>
+            <li>Link-local address of the domain owner</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>107. Which two statements describe the characteristics of symmetric algorithms? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">They are referred to as a pre-shared key or secret key.</li>
+            <li>They use a pair of a public key and a private key.</li>
+            <li class="correct">They are commonly used with VPN traffic.</li>
+            <li>They provide confidentiality, integrity, and availability.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>108. What are two drawbacks to using HIPS? (Choose two.)</h2>
+        <ul class="answers">
+            <li>With HIPS, the success or failure of an attack cannot be readily determined.</li>
+            <li class="correct">If the network traffic stream is encrypted, HIPS is unable to access unencrypted forms of the traffic.</li>
+            <li>HIPS installations are vulnerable to fragmentation attacks or variable TTL attacks.</li>
+            <li>With HIPS, the network administrator must verify support for all the different operating systems used in the network.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>109. What are three functions provided by the syslog service? (Choose three.)</h2>
+        <ul class="answers">
+            <li class="correct">To gather logging information for monitoring and troubleshooting</li>
+            <li class="correct">To specify the destinations of captured messages</li>
+            <li class="correct">To periodically poll agents for data</li>
+            <li>To provide statistics on packets that are flowing through a Cisco device</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>110. Which consideration is important when implementing syslog in a network?</h2>
+        <ul class="answers">
+            <li class="correct">Synchronize clocks on all network devices with a protocol such as Network Time Protocol.</li>
+            <li>Enable the highest level of syslog available to ensure logging of all possible event messages.</li>
+            <li>Log all messages to the system buffer so that they can be displayed when accessing the router.</li>
+            <li>Use SSH to access syslog information.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>111. What are the two ways threat actors use NTP? (Choose two.)</h2>
+        <ul class="answers">
+            <li>They place an attachment inside an email message.</li>
+            <li class="correct">Threat actors use NTP systems to direct DDoS attacks.</li>
+            <li>They attack the NTP infrastructure in order to corrupt the information used to log the attack.</li>
+            <li>They place iFrames on a frequently used corporate web page.</li>
+            <li>They encode stolen data as the subdomain portion where the nameserver is under control of an attacker.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>112. Which two features are included by both TACACS+ and RADIUS protocols? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">Password encryption</li>
+            <li class="correct">Utilization of transport layer protocols</li>
+            <li>Separate authentication and authorization processes</li>
+            <li>SIP support</li>
+            <li>802.1X support</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>113. Match the SIEM function to the description.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>Log management</li>
+            <li>Event correlation</li>
+            <li>Alerting</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>114. What are two types of attacks used on DNS open resolvers? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">Amplification and reflection</li>
+            <li>Fast flux</li>
+            <li>ARP poisoning</li>
+            <li>Resource utilization</li>
+            <li>Cushioning</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>115. What are three goals of a port scan attack? (Choose three.)</h2>
+        <ul class="answers">
+            <li class="correct">To identify potential vulnerabilities</li>
+            <li class="correct">To identify active services</li>
+            <li class="correct">To determine peripheral configurations</li>
+            <li>To discover system passwords</li>
+            <li>To disable used ports and services</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>116. Which protocol or service uses UDP for client-to-server communication and TCP for server-to-server communication?</h2>
+        <ul class="answers">
+            <li>HTTP</li>
+            <li>FTP</li>
+            <li class="correct">DNS</li>
+            <li>SMTP</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>117. What is one difference between the client-server and peer-to-peer network models?</h2>
+        <ul class="answers">
+            <li>Only in the client-server model can file transfers occur.</li>
+            <li>A data transfer that uses a device serving in a client role requires that a dedicated server be present.</li>
+            <li class="correct">Every device in a peer-to-peer network can function as a client or a server.</li>
+            <li>A peer-to-peer network transfers data faster than a transfer using a client-server network.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>118. Which statement is correct about network protocols?</h2>
+        <ul class="answers">
+            <li class="correct">They define how messages are exchanged between the source and the destination.</li>
+            <li>They are only required for exchange of messages between devices on remote networks.</li>
+            <li>They all function in the network access layer of TCP/IP.</li>
+            <li>Network protocols define the type of hardware that is used and how it is mounted in racks.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>119. Which approach can help block potential malware delivery methods as described in the Cyber Kill Chain model on an Internet-faced web server?</h2>
+        <ul class="answers">
+            <li>Audit the web server to forensically determine the origin of exploit.</li>
+            <li>Analyze the infrastructure storage path used for files.</li>
+            <li class="correct">Build detections for the behavior of known malware.</li>
+            <li>Collect malware files and metadata for future analysis.</li>
+        </ul>
+    </div>
 
-        <h2>Step 3: Configure routing on the ASA</h2>
-
-        <pre>HQ-ASA5506
-route OUTSIDE 0.0.0.0 0.0.0.0 209.165.200.254
-        </pre>
-
-        <h2>Step 4: Configure Secure Network Management for the ASA Device</h2>
-
-        <h3>a. Configure the ASA with NTP and AAA</h3>
-        <pre>HQ-ASA5506
-ntp authenticate
-ntp authentication-key 1 md5 corpkey
-ntp server 192.168.10.10
-ntp trusted-key 1
-        </pre>
-
-        <h3>b. Configure AAA and SSH</h3>
-        <pre>username Car1Admin password adminpass01
-aaa authentication ssh console LOCAL
-crypto key generate rsa modulus 1024
-yes
-ssh 192.168.10.250 255.255.255.255 INSIDE
-ssh timeout 20
-        </pre>
-
-        <h2>Step 5: Configure NAT Service for the ASA device for both INSIDE and DMZ networks</h2>
-
-        <pre>HQ-ASA5506
-object network INSIDE-nat
-subnet 192.168.10.0 255.255.255.0
-nat (inside,outside) dynamic interface
-exit
-configure terminal
-object network DMZ-web-server
-host 192.168.20.2
-nat (dmz,outside) static 209.165.200.241
-exit
-configure terminal
-object network DMZ-dns-server
-host 192.168.20.5
-nat (dmz,outside) static 209.165.200.242
-exit
-        </pre>
-
-        <h2>Step 6: Configure ACL on the ASA device to implement the Security Policy</h2>
-
-        <pre>HQ-ASA5506
-configure terminal
-access-list NAT-IP-ALL extended permit ip any any
-access-group NAT-IP-ALL in interface OUTSIDE
-access-group NAT-IP-ALL in interface DMZ
-access-list OUTSIDE-TO-DMZ extended permit tcp any host 209.165.200.241 eq 80
-access-list OUTSIDE-TO-DMZ extended permit tcp any host 209.165.200.242 eq 53
-access-list OUTSIDE-TO-DMZ extended permit udp any host 209.165.200.242 eq 53
-access-list OUTSIDE-TO-DMZ extended permit tcp host 198.133.219.35 host 209.165.200.241 eq ftp
-end
-copy running-config startup-config
-        </pre>
-    </section>
-
-    <section>
-        <h1>Part 2: Configure Layer 2 Security on a Switch</h1>
-
-        <h2>Step 1: Disable Unused Switch Ports</h2>
-
-        <pre>Switch 1
-enable
-conf t
-interface range f0/2-4, f0/6-9, f0/11-22, g0/2
-shutdown
-switchport mode access
-switchport nonegotiate
-        </pre>
-
-        <h2>Step 2: Implement Port Security</h2>
-
-        <pre>Switch 1
-interface range f0/1, f0/5, f0/10
-switchport mode access
-switchport port-security
-switchport port-security maximum 2
-switchport port-security mac-address sticky
-switchport port-security violation restrict
-switchport nonegotiate
-        </pre>
-
-        <h2>Step 3: Implement STP Security</h2>
-
-        <pre>Switch 1
-interface range f0/1, f0/5, f0/10, g0/1
-spanning-tree bpduguard enable
-spanning-tree portfast
-end
-copy running-config startup-config
-        </pre>
-    </section>
-
-    <section>
-        <h1>Part 3: Configure a Site-to-Site IPsec VPN between the HQ and the Branch Routers</h1>
-
-        <h2>HQ Router</h2>
-
-        <pre>enable
-Password: RTR-AdminP@55
-conf ter
-access-list 120 permit ip 209.165.200.240 0.0.0.15 198.133.219.32 0.0.0.31
-crypto isakmp policy 10
-encryption aes 256
-hash sha
-authentication pre-share
-group 2
-lifetime 1800
-exit
-crypto isakmp key Vpnpass101 address 198.133.219.2
-crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac
-crypto map VPN-MAP 10 ipsec-isakmp
-match address 120
-set transform-set VPN-SET
-set peer 198.133.219.2
-set pfs group2
-set security-association lifetime seconds 1800
-exit
-int s0/0/0
-crypto map VPN-MAP
-end
-copy running-config startup-config
-        </pre>
-
-        <h2>Branch Router</h2>
-
-        <pre>enable
-Password: RTR-AdminP@55
-conf ter
-access-list 120 permit ip 198.133.219.32 0.0.0.31 209.165.200.240 0.0.0.15
-crypto isakmp policy 10
-encryption aes 256
-hash sha
-authentication pre-share
-group 2
-lifetime 1800
-exit
-crypto isakmp key Vpnpass101 address 209.165.200.226
-crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac
-crypto map VPN-MAP 10 ipsec-isakmp
-match address 120
-set transform-set VPN-SET
-set peer 209.165.200.226
-set pfs group2
-set security-association lifetime seconds 1800
-exit
-int s0/0/0
-crypto map VPN-MAP
-end
-copy running-config startup-config
-        </pre>
-    </section>
-
-</body>
-</html>
+    <div class="question">
+        <h2>120. Which meta-feature element in the Diamond Model classifies the general type of intrusion event?</h2>
+        <ul class="answers">
+            <li>Phase</li>
+            <li>Results</li>
+            <li class="correct">Methodology</li>
+            <li>Direction</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>121. Which Linux command is used to manage processes?</h2>
+        <ul class="answers">
+            <li>chrootkit</li>
+            <li>ls</li>
+            <li>grep</li>
+            <li class="correct">kill</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>122. Which tool can be used in a Cisco AVC system to analyze and present the application analysis data into dashboard reports?</h2>
+        <ul class="answers">
+            <li>NetFlow</li>
+            <li>NBAR2</li>
+            <li class="correct">Prime</li>
+            <li>IPFIX</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>123. Which Windows Event Viewer log includes events regarding the operation of drivers, processes, and hardware?</h2>
+        <ul class="answers">
+            <li class="correct">System logs</li>
+            <li>Application logs</li>
+            <li>Security logs</li>
+            <li>Setup logs</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>124. Which method is used to make data unreadable to unauthorized users?</h2>
+        <ul class="answers">
+            <li class="correct">Encrypt the data.</li>
+            <li>Fragment the data.</li>
+            <li>Add a checksum to the end of the data.</li>
+            <li>Assign it a username and password.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>125. Match the tabs of the Windows 10 Task Manager to their functions.</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>Processes</li>
+            <li>Performance</li>
+            <li>App history</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>126. For network systems, which management system addresses the inventory and control of hardware and software configurations?</h2>
+        <ul class="answers">
+            <li>Asset management</li>
+            <li>Vulnerability management</li>
+            <li>Risk management</li>
+            <li class="correct">Configuration management</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>127. Match the common network technology or protocol with the description. (Not all options are used.)</h2>
+        <p>Placeholder for matching items:</p>
+        <ul class="answers">
+            <li>Ethernet</li>
+            <li>Wi-Fi</li>
+            <li>IP</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>128. What are the three core functions provided by the Security Onion? (Choose three.)</h2>
+        <ul class="answers">
+            <li>Business continuity planning</li>
+            <li class="correct">Full packet capture</li>
+            <li class="correct">Alert analysis</li>
+            <li class="correct">Intrusion detection</li>
+            <li>Security device management</li>
+            <li>Threat containment</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>129. In NAT terms, what address type refers to the globally routable IPv4 address of a destination host on the Internet?</h2>
+        <ul class="answers">
+            <li>Outside global</li>
+            <li class="correct">Inside global</li>
+            <li>Outside local</li>
+            <li>Inside local</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>130. Which two fields or features does Ethernet examine to determine if a received frame is passed to the data link layer or discarded by the NIC? (Choose two.)</h2>
+        <ul class="answers">
+            <li>CEF</li>
+            <li class="correct">Source MAC address</li>
+            <li>Minimum frame size</li>
+            <li>Auto-MDIX</li>
+            <li class="correct">Frame Check Sequence</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>131. Which type of data would be considered an example of volatile data?</h2>
+        <ul class="answers">
+            <li>Web browser cache</li>
+            <li class="correct">Memory registers</li>
+            <li>Log files</li>
+            <li>Temp files</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>132. What is the main purpose of exploitations by a threat actor through the weapon delivered to a target during the Cyber Kill Chain exploitation phase?</h2>
+        <ul class="answers">
+            <li>Launch a DoS attack.</li>
+            <li>Send a message back to a CnC controlled by the threat actor.</li>
+            <li class="correct">Break the vulnerability and gain control of the target.</li>
+            <li>Establish a backdoor into the system.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>133. Refer to the exhibit. An administrator is trying to troubleshoot connectivity between PC1 and PC2 and uses the tracert command from PC1 to do it. Based on the displayed output where should the administrator begin troubleshooting?</h2>
+        <ul class="answers">
+            <li>CyberOps Associate</li>
+            <li>R1</li>
+            <li>PC2</li>
+            <li>SW2</li>
+            <li>R2</li>
+            <li>SW1</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>134. What three security tools does Cisco Talos maintain security incident detection rule sets for? (Choose three.)</h2>
+        <ul class="answers">
+            <li class="correct">Snort</li>
+            <li>NetStumbler</li>
+            <li>Socat</li>
+            <li>SpamCop</li>
+            <li class="correct">ClamAV</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>135. Which host-based firewall uses a three-profile approach to configure the firewall functionality?</h2>
+        <ul class="answers">
+            <li class="correct">Windows Firewall</li>
+            <li>iptables</li>
+            <li>TCP Wrapper</li>
+            <li>nftables</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>136. When a user visits an online store website that uses HTTPS, the user’s browser queries the CA for a CRL. What is the purpose of this query?</h2>
+        <ul class="answers">
+            <li class="correct">To verify the validity of the digital certificate</li>
+            <li>To request the CA self-signed digital certificate</li>
+            <li>To check the length of the key used for the digital certificate</li>
+            <li>To negotiate the best encryption to use</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>137. Which step in the Vulnerability Management Life Cycle determines a baseline risk profile to eliminate risks based on asset criticality, vulnerability, threat, and asset classification?</h2>
+        <ul class="answers">
+            <li>Discover</li>
+            <li class="correct">Assess</li>
+            <li>Prioritize assets</li>
+            <li>Verify</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>138. Which management system implements systems that track the location and configuration of networked devices and software across an enterprise?</h2>
+        <ul class="answers">
+            <li class="correct">Asset management</li>
+            <li>Vulnerability management</li>
+            <li>Risk management</li>
+            <li>Configuration management</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>139. A network administrator is reviewing server alerts because of reports of network slowness. The administrator confirms that an alert was an actual security incident. What is the security alert classification of this type of scenario?</h2>
+        <ul class="answers">
+            <li>False negative</li>
+            <li class="correct">True positive</li>
+            <li>True negative</li>
+            <li>False positive</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>140. Which application layer protocol is used to provide file-sharing and print services to Microsoft applications?</h2>
+        <ul class="answers">
+            <li>SMTP</li>
+            <li>HTTP</li>
+            <li class="correct">SMB</li>
+            <li>DHCP</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>141. What is the role of a Network Access Control (NAC) system?</h2>
+        <ul class="answers">
+            <li>To provide a secure communications channel over an untrusted network</li>
+            <li>To allow users to access network resources based on predefined policies</li>
+            <li class="correct">To control the devices that can access the network and enforce security policies</li>
+            <li>To manage and distribute IP addresses to devices on the network</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>142. In a CSMA/CD network, what happens when a device detects a collision?</h2>
+        <ul class="answers">
+            <li>All devices on the network stop transmitting immediately.</li>
+            <li>Only the device that caused the collision stops transmitting.</li>
+            <li class="correct">The devices involved in the collision stop transmitting and wait a random amount of time before attempting to retransmit.</li>
+            <li>The devices involved in the collision continue to transmit until the frame is acknowledged.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>143. What is the purpose of implementing a DMZ in a network?</h2>
+        <ul class="answers">
+            <li>To provide secure access to internal resources for remote users</li>
+            <li>To separate untrusted networks from trusted internal networks and provide an additional layer of security</li>
+            <li class="correct">To host public-facing services while protecting the internal network from external threats</li>
+            <li>To ensure that all network traffic is encrypted and secure</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>144. Which protocol is used to secure remote access to network devices?</h2>
+        <ul class="answers">
+            <li>Telnet</li>
+            <li class="correct">SSH</li>
+            <li>FTP</li>
+            <li>SNMP</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>145. What is a common method for mitigating DDoS attacks?</h2>
+        <ul class="answers">
+            <li>Increasing bandwidth to handle more traffic</li>
+            <li>Using rate limiting on incoming traffic</li>
+            <li class="correct">Deploying traffic scrubbing services that filter out malicious traffic</li>
+            <li>Disabling unused services on the network</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>146. What is the main purpose of an IDS (Intrusion Detection System)?</h2>
+        <ul class="answers">
+            <li>To prevent unauthorized access to the network</li>
+            <li class="correct">To monitor network traffic for suspicious activity and alert administrators</li>
+            <li>To analyze traffic patterns for performance optimization</li>
+            <li>To encrypt data transmitted over the network</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>147. Which type of attack is designed to exploit vulnerabilities in a web application by injecting malicious code?</h2>
+        <ul class="answers">
+            <li>Cross-Site Scripting (XSS)</li>
+            <li>SQL Injection</li>
+            <li class="correct">Both A and B</li>
+            <li>Denial of Service (DoS)</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>148. Which technology can be used to encrypt data in transit over a public network?</h2>
+        <ul class="answers">
+            <li>HTTP</li>
+            <li>FTP</li>
+            <li class="correct">SSL/TLS</li>
+            <li>Telnet</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>149. What is the function of a VPN?</h2>
+        <ul class="answers">
+            <li>To provide users with access to public Wi-Fi</li>
+            <li class="correct">To create a secure, encrypted connection over a less secure network</li>
+            <li>To increase the speed of internet connections</li>
+            <li>To bypass firewalls and network filters</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>150. Which security model uses layers to protect assets, starting from physical security up to logical security?</h2>
+        <ul class="answers">
+            <li>Defense in Depth</li>
+            <li>Zero Trust</li>
+            <li class="correct">Layered Security</li>
+            <li>Social Engineering</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>151. What are two characteristics of a stateful firewall? (Choose two.)</h2>
+        <ul class="answers">
+            <li class="correct">It maintains a state table to track the state of active connections.</li>
+            <li class="correct">It can allow or deny traffic based on the state of the connection.</li>
+            <li>It analyzes packets in isolation without considering the state of the connection.</li>
+            <li>It is faster than a stateless firewall due to its lack of connection tracking.</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>152. In a public key infrastructure (PKI), what is the role of a Certificate Authority (CA)?</h2>
+        <ul class="answers">
+            <li>To provide secure access to private networks</li>
+            <li class="correct">To issue digital certificates and verify the identity of certificate holders</li>
+            <li>To create public and private keys for users</li>
+            <li>To monitor network traffic for security threats</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>153. What is the purpose of a honeypot in cybersecurity?</h2>
+        <ul class="answers">
+            <li>To provide a secure area for legitimate users</li>
+            <li>To detect and analyze unauthorized access attempts</li>
+            <li class="correct">To attract and trap malicious actors and gather information about their tactics</li>
+            <li>To store sensitive data securely</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>154. Which of the following is a common technique used in phishing attacks?</h2>
+        <ul class="answers">
+            <li>Direct physical access to the target's computer</li>
+            <li class="correct">Creating fake websites that resemble legitimate sites</li>
+            <li>Using a brute-force attack to crack passwords</li>
+            <li>Sending encrypted emails to the target</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>155. What does the term 'sandboxing' refer to in cybersecurity?</h2>
+        <ul class="answers">
+            <li>Creating a secure environment for executing untrusted applications</li>
+            <li>Deploying multiple firewalls to protect sensitive data</li>
+            <li>Running network traffic analysis tools</li>
+            <li class="correct">Isolating applications to prevent them from affecting other parts of the system</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>156. What is the primary purpose of data loss prevention (DLP) solutions?</h2>
+        <ul class="answers">
+            <li>To ensure network uptime and availability</li>
+            <li class="correct">To protect sensitive data from unauthorized access and transmission</li>
+            <li>To monitor network performance and optimize bandwidth usage</li>
+            <li>To provide secure access to cloud storage services</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>157. What is an example of a physical security control?</h2>
+        <ul class="answers">
+            <li>Firewalls</li>
+            <li>Encryption</li>
+            <li class="correct">Access control systems, such as key cards or biometric scanners</li>
+            <li>Intrusion detection systems</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>158. Which method is commonly used to secure a wireless network?</h2>
+        <ul class="answers">
+            <li>WEP</li>
+            <li>MAC address filtering</li>
+            <li>Open authentication</li>
+            <li class="correct">WPA2 or WPA3 encryption</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>159. In which scenario would an organization use a VPN?</h2>
+        <ul class="answers">
+            <li>When connecting to a local area network</li>
+            <li class="correct">When remote users need secure access to the organization's internal network</li>
+            <li>When using public Wi-Fi for general internet browsing</li>
+            <li>When communicating within the same office building</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>160. What is a common consequence of not regularly updating software and systems?</h2>
+        <ul class="answers">
+            <li>Increased performance of applications</li>
+            <li>Improved user experience</li>
+            <li class="correct">Vulnerability to security threats and attacks</li>
+            <li>Faster network speeds</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>161. What is the primary function of an Intrusion Prevention System (IPS)?</h2>
+        <ul class="answers">
+            <li>To monitor network traffic and send alerts</li>
+            <li class="correct">To detect and prevent unauthorized access to the network</li>
+            <li>To provide encryption for data in transit</li>
+            <li>To filter spam and malicious emails</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>162. Which type of malware disguises itself as legitimate software to trick users into downloading it?</h2>
+        <ul class="answers">
+            <li>Ransomware</li>
+            <li>Spyware</li>
+            <li class="correct">Trojan horse</li>
+            <li>Adware</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>163. What is a zero-day exploit?</h2>
+        <ul class="answers">
+            <li>An exploit that targets a known vulnerability that has been patched</li>
+            <li>An exploit that occurs after a vulnerability has been publicly disclosed</li>
+            <li class="correct">An exploit that occurs on the same day a vulnerability is discovered</li>
+            <li>An exploit that is executed on a specific date</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>164. In the context of cybersecurity, what does the term "attack vector" refer to?</h2>
+        <ul class="answers">
+            <li>The specific path or means by which a hacker gains access to a computer or network</li>
+            <li>The methods used to defend against cyber attacks</li>
+            <li class="correct">The various ways in which an attacker can exploit a vulnerability</li>
+            <li>The tools used to perform a cyber attack</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>165. Which of the following is a characteristic of a Distributed Denial of Service (DDoS) attack?</h2>
+        <ul class="answers">
+            <li>It originates from a single source</li>
+            <li>It is always a targeted attack</li>
+            <li class="correct">It uses multiple systems to flood a target with traffic</li>
+            <li>It requires insider access to execute</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>166. Which technology is used to verify the integrity and authenticity of a message or document?</h2>
+        <ul class="answers">
+            <li>Hashing</li>
+            <li>Encryption</li>
+            <li class="correct">Digital signatures</li>
+            <li>Data masking</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>167. In cybersecurity, what is the purpose of conducting a vulnerability assessment?</h2>
+        <ul class="answers">
+            <li>To eliminate all vulnerabilities in a system</li>
+            <li>To identify and prioritize vulnerabilities in a system</li>
+            <li class="correct">To evaluate the security of a system and provide recommendations for improvement</li>
+            <li>To create a risk management plan</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>168. What does the term "social engineering" refer to in cybersecurity?</h2>
+        <ul class="answers">
+            <li>Engineering secure social media applications</li>
+            <li>Manipulating individuals into divulging confidential information</li>
+            <li class="correct">Using psychological tricks to influence users to bypass security protocols</li>
+            <li>Developing social engineering tools for ethical hacking</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>169. Which of the following is a proactive approach to security?</h2>
+        <ul class="answers">
+            <li>Incident response</li>
+            <li>Monitoring</li>
+            <li class="correct">Risk assessment</li>
+            <li>Compliance auditing</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>170. What is the primary goal of penetration testing?</h2>
+        <ul class="answers">
+            <li>To ensure compliance with security standards</li>
+            <li>To identify vulnerabilities before attackers do</li>
+            <li class="correct">To simulate an attack on a system to find weaknesses</li>
+            <li>To implement security measures based on the findings</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>171. Which encryption method uses the same key for both encryption and decryption?</h2>
+        <ul class="answers">
+            <li>Asymmetric encryption</li>
+            <li class="correct">Symmetric encryption</li>
+            <li>Hashing</li>
+            <li>Digital signatures</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>172. Which of the following actions is considered best practice when creating strong passwords?</h2>
+        <ul class="answers">
+            <li>Using the same password for multiple accounts</li>
+            <li>Using easily guessable personal information</li>
+            <li class="correct">Creating a long password that includes a mix of letters, numbers, and symbols</li>
+            <li>Writing passwords down and storing them in plain sight</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>173. What is the function of a firewall?</h2>
+        <ul class="answers">
+            <li>To encrypt data in transit</li>
+            <li>To prevent unauthorized access to or from a private network</li>
+            <li>To scan for malware on devices</li>
+            <li class="correct">To filter incoming and outgoing network traffic based on predetermined security rules</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>174. What is the main purpose of network segmentation?</h2>
+        <ul class="answers">
+            <li>To increase network speed</li>
+            <li>To reduce network congestion</li>
+            <li class="correct">To improve security by isolating different parts of the network</li>
+            <li>To enhance the performance of network devices</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>175. What is the purpose of an Incident Response Plan (IRP)?</h2>
+        <ul class="answers">
+            <li>To prevent all security incidents</li>
+            <li>To provide a structured approach for responding to security incidents</li>
+            <li class="correct">To minimize damage and recover from security breaches effectively</li>
+            <li>To track user activity on the network</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>176. What is a common symptom of a computer infected with malware?</h2>
+        <ul class="answers">
+            <li>Increased battery life</li>
+            <li>Slower performance and unexpected behavior</li>
+            <li class="correct">Frequent pop-up ads and unwanted software installations</li>
+            <li>Improved security updates</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>177. In the context of cybersecurity, what does 'phishing' refer to?</h2>
+        <ul class="answers">
+            <li>Using social engineering techniques to trick individuals into revealing personal information</li>
+            <li>Sending malware to exploit vulnerabilities in a system</li>
+            <li class="correct">Sending fraudulent communications that appear to come from reputable sources to steal sensitive data</li>
+            <li>Exploiting technical weaknesses in software</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>178. What is the purpose of a DMZ in network architecture?</h2>
+        <ul class="answers">
+            <li>To protect the internal network from external threats</li>
+            <li>To provide a buffer zone between an internal network and untrusted external networks</li>
+            <li class="correct">To host public-facing services while keeping internal resources safe</li>
+            <li>To ensure that all traffic is encrypted</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>179. What type of attack uses multiple systems to flood a target with traffic?</h2>
+        <ul class="answers">
+            <li>Brute force attack</li>
+            <li>Phishing attack</li>
+            <li class="correct">Distributed Denial of Service (DDoS) attack</li>
+            <li>Man-in-the-middle attack</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>180. Which of the following best describes a vulnerability in cybersecurity?</h2>
+        <ul class="answers">
+            <li>Any type of attack on a system</li>
+            <li>Weakness in a system that can be exploited to compromise its security</li>
+            <li class="correct">A flaw in software or hardware that can be used to gain unauthorized access</li>
+            <li>A method to encrypt sensitive data</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>181. What does the principle of least privilege mean in access control?</h2>
+        <ul class="answers">
+            <li>Users should have the maximum level of access required</li>
+            <li>Users should only have the minimum level of access required to perform their job functions</li>
+            <li class="correct">Users should be granted permissions based on their specific tasks and needs</li>
+            <li>Access should be granted to all users equally</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>182. Which term describes malicious software designed to infiltrate or damage a computer system?</h2>
+        <ul class="answers">
+            <li>Virus</li>
+            <li>Spyware</li>
+            <li class="correct">Malware</li>
+            <li>Ransomware</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>183. What is the purpose of multi-factor authentication (MFA)?</h2>
+        <ul class="answers">
+            <li>To simplify the authentication process</li>
+            <li>To enhance security by requiring multiple forms of verification</li>
+            <li class="correct">To reduce the risk of unauthorized access to sensitive information</li>
+            <li>To eliminate the need for passwords</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>184. What does the acronym "SIEM" stand for in cybersecurity?</h2>
+        <ul class="answers">
+            <li>System Information and Event Management</li>
+            <li>Security Information and Event Management</li>
+            <li class="correct">Security Incident and Event Management</li>
+            <li>System Integrity and Event Management</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>185. In the context of incident response, what does "containment" refer to?</h2>
+        <ul class="answers">
+            <li>Eliminating the threat completely</li>
+            <li>Preventing the spread of the threat to other systems</li>
+            <li class="correct">Taking measures to limit the impact of an incident on the organization</li>
+            <li>Documenting the incident for future analysis</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>186. What is an example of an administrative control in cybersecurity?</h2>
+        <ul class="answers">
+            <li>Firewalls</li>
+            <li>Access control lists</li>
+            <li class="correct">Security policies and procedures</li>
+            <li>Encryption methods</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>187. Which of the following is a method used to perform a brute-force attack?</h2>
+        <ul class="answers">
+            <li>Using a phishing email</li>
+            <li class="correct">Trying every possible combination of passwords until the correct one is found</li>
+            <li>Exploiting a software vulnerability</li>
+            <li>Performing social engineering</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>188. What is a key advantage of using encryption?</h2>
+        <ul class="answers">
+            <li>It makes data transfer faster</li>
+            <li class="correct">It protects sensitive data from unauthorized access</li>
+            <li>It eliminates the need for authentication</li>
+            <li>It simplifies data management</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>189. In cybersecurity, what is the purpose of a patch?</h2>
+        <ul class="answers">
+            <li>To reduce the speed of software</li>
+            <li>To enhance the appearance of a user interface</li>
+            <li class="correct">To fix vulnerabilities and improve software security</li>
+            <li>To improve the documentation of the software</li>
+        </ul>
+    </div>
+    
+    <div class="question">
+        <h2>190. What is the function of the transport layer in the OSI model?</h2>
+        <ul class="answers">
+            <li>To ensure that data is transmitted over the physical network</li>
+            <li class="correct">To provide end-to-end communication and data flow control</li>
+            <li>To manage data routing between networks</li>
+            <li>To ensure that the data is properly formatted for display</li>
+        </ul>
+    </div>
+    
+    </body>
+    </html>
+    
+    
+    
+    
+    
+    
+    
